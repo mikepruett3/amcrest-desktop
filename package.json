@@ -1,0 +1,31 @@
+{
+  "name": "amcrest-desktop",
+  "version": "1.0.0",
+  "description": "A simple Desktop application for Amcrest NVR, built using Electron.js",
+  "main": "main.js",
+  "scripts": {
+    "test": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mikepruett3/amcrest-desktop.git"
+  },
+  "keywords": [
+    "Electron",
+    "Amcrest",
+    "NVR"
+  ],
+  "author": "Mike Pruett <mikepruett3@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mikepruett3/amcrest-desktop/issues"
+  },
+  "homepage": "https://github.com/mikepruett3/amcrest-desktop",
+  "devDependencies": {
+    "electron": "^14.2.9"
+  },
+  "dependencies": {
+    "electron-prompt": "^1.7.0",
+    "electron-store": "^8.1.0"
+  }
+}
