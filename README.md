@@ -1,18 +1,23 @@
 # Amcrest Desktop
 
+![AmcrestDesktop](https://github.com/mikepruett3/amcrest-desktop/blob/main/images/Amcrest.png?raw=true)
+
 Amcrest Desktop is a simple Desktop application for viewing Amcrest NVR's, built using [ElectronJS](https://www.electronjs.org).
+
+## Features (Tray)
+
+- Remove Stored URL
+- Control for Hardware Acceleration
 
 ## Installation
 
-Dowload the lates [release](https://github.com/mikepruett3/amcrest-desktop/releases) for Windows. Unfortunatley I am not able to provide packages for Linux or MacOS at this time.
+Dowload the lates [release](https://github.com/mikepruett3/amcrest-desktop/releases) for Windows, Linux and MacOS.
 
 For Windows... a standard Exectuable is provided, as well as a NuGet package.
 
 ## Launching
 
 To run, just launch the executable via the Desktop Shortcut, or the Executable directly.
-
-Hardware Acceleration is disabled at launch
 
 ## Building
 
@@ -38,7 +43,11 @@ npm run make
 
 ## Dependencies
 
-- electron-squirrel-startup
-- publisher-github
-- electron-forge
 - electron
+- electron-forge
+- electron-store
+- publisher-github
+
+## Errata
+
+Logo borrowed from [@AmcrestSecurity](https://twitter.com/AmcrestSecurity)
