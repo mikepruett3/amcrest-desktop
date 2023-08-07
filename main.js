@@ -3,7 +3,7 @@
 // https://www.electronforge.io/config/makers/squirrel.windows
 if (require('electron-squirrel-startup')) return;
 
-const { app, session, BrowserWindow, Tray, Menu, nativeImage, dialog } = require('electron');
+const { app, session, BrowserWindow, Menu, MenuItem, Tray, nativeImage, dialog } = require('electron');
 //const { app, BrowserWindow } = require('electron');
 const prompt = require('electron-prompt');
 const { getURL, setURL, delURL, getHA, setHA } = require('./settings.js');
@@ -17,8 +17,6 @@ if (!getHA()) {
     app.disableHardwareAcceleration()
 }
 
-//let tray
-
 createWindow = () => {
     const win = new BrowserWindow({
         width: 1280,
@@ -27,6 +25,7 @@ createWindow = () => {
         icon: __dirname + '/images/Amcrest.ico',
         autoHideMenuBar: true,
         webPreferences: {
+            spellcheck: true,
             nativeWindowOpen: true
         }
     })
@@ -57,8 +56,34 @@ createWindow = () => {
         .catch(console.error);
     }
 
+    win.webContents.on('context-menu', (event, params) => {
+        const menu = new Menu()
+
+        // Add each spelling suggestion
+        for (const suggestion of params.dictionarySuggestions) {
+            menu.append(
+                new MenuItem({
+                    label: suggestion,
+                    click: () => win.webContents.replaceMisspelling(suggestion)
+                })
+            )
+        }
+
+        // Allow users to add the misspelled word to the dictionary
+        if (params.misspelledWord) {
+            menu.append(
+                new MenuItem({
+                    label: 'Add to dictionary',
+                    click: () => win.webContents.session.addWordToSpellCheckerDictionary(params.misspelledWord)
+                })
+            )
+        }
+
+        menu.popup()
+    })
+
     const icon = nativeImage.createFromPath(__dirname + '/images/Amcrest.ico')
-    tray = new Tray(icon)
+    const tray = new Tray(icon)
 
     const contextMenu = Menu.buildFromTemplate([
         {

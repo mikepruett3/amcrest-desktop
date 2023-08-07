@@ -1,6 +1,6 @@
 {
   "name": "amcrest-desktop",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "productName": "Amcrest Desktop",
   "description": "A simple Desktop application for Amcrest NVR, built using Electron.js",
   "main": "main.js",
