@@ -9,7 +9,7 @@ module.exports = {
     {
       name: '@electron-forge/maker-squirrel',
       config: {
-        iconUrl: __dirname + '/images/Amcrest.ico',
+        iconUrl: 'https://raw.githubusercontent.com/mikepruett3/amcrest-desktop/main/images/Amcrest.ico',
         setupIcon: './images/Amcrest.ico'
       },
     },
