@@ -3,12 +3,9 @@
 // https://www.electronforge.io/config/makers/squirrel.windows
 if (require('electron-squirrel-startup')) return;
 
-const { app, session, BrowserWindow, Menu, MenuItem, Tray, nativeImage, dialog } = require('electron');
-//const { app, BrowserWindow } = require('electron');
-const prompt = require('electron-prompt');
-const { getURL, setURL, delURL, getHA, setHA } = require('./settings.js');
-//const { getURL, setURL, getHA } = require('./settings.js');
-//const Tray = require('./tray');
+const { app, BrowserWindow, Menu, MenuItem, Tray, nativeImage, dialog } = require('electron')
+const prompt = require('electron-prompt')
+const { getURL, setURL, delURL, getHA, setHA } = require('./settings.js')
 
 // Disable Hardware Acceleration
 // https://www.electronjs.org/docs/latest/tutorial/offscreen-rendering
@@ -18,7 +15,7 @@ if (!getHA()) {
 }
 
 createWindow = () => {
-    const win = new BrowserWindow({
+    const window = new BrowserWindow({
         width: 1280,
         height: 720,
         title: 'Amcrest Desktop',
@@ -32,7 +29,7 @@ createWindow = () => {
 
     const url = getURL();
     if (url) {
-        win.loadURL(url);
+        window.loadURL(url);
     } else {
         prompt({
             title: 'Amcrest NVR Website',
@@ -49,14 +46,14 @@ createWindow = () => {
                 console.log('user cancelled');
             } else {
                 setURL(r);
-                win.loadURL(r);
+                window.loadURL(r);
                 console.log('result', r);
             }
         })
         .catch(console.error);
     }
 
-    win.webContents.on('context-menu', (event, params) => {
+    window.webContents.on('context-menu', (event, params) => {
         const menu = new Menu()
 
         // Add each spelling suggestion
@@ -64,7 +61,7 @@ createWindow = () => {
             menu.append(
                 new MenuItem({
                     label: suggestion,
-                    click: () => win.webContents.replaceMisspelling(suggestion)
+                    click: () => window.webContents.replaceMisspelling(suggestion)
                 })
             )
         }
@@ -74,7 +71,7 @@ createWindow = () => {
             menu.append(
                 new MenuItem({
                     label: 'Add to dictionary',
-                    click: () => win.webContents.session.addWordToSpellCheckerDictionary(params.misspelledWord)
+                    click: () => window.webContents.session.addWordToSpellCheckerDictionary(params.misspelledWord)
                 })
             )
         }
@@ -83,7 +80,7 @@ createWindow = () => {
     })
 
     const icon = nativeImage.createFromPath(__dirname + '/images/Amcrest.ico')
-    const tray = new Tray(icon)
+    tray = new Tray(icon)
 
     const contextMenu = Menu.buildFromTemplate([
         {
@@ -127,7 +124,7 @@ createWindow = () => {
         },
         {
             label: 'Reload',
-            click: () => win.reload()
+            click: () => window.reload()
         },
         {
             label: 'Quit',
