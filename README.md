@@ -4,8 +4,9 @@
 
 Amcrest Desktop is a simple Desktop application for viewing Amcrest NVR's, built using [ElectronJS](https://www.electronjs.org).
 
-## Features (Tray)
+## Features
 
+- Spell Check
 - Remove Stored URL
 - Control for Hardware Acceleration
 
