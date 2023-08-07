@@ -11,7 +11,7 @@ Amcrest Desktop is a simple Desktop application for viewing Amcrest NVR's, built
 
 ## Installation
 
-Dowload the lates [release](https://github.com/mikepruett3/amcrest-desktop/releases) for Windows, Linux and MacOS.
+Dowload the latest [release](https://github.com/mikepruett3/amcrest-desktop/releases) for Windows, Linux and MacOS.
 
 For Windows... a standard Exectuable is provided, as well as a NuGet package.
 
